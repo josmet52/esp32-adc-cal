@@ -1,17 +1,17 @@
 # MicroPython ESP32 ADC1 calibration  
 using V\_ref calibration value  
-<small><samll>**information taken from** https://github.com/matthias-bs/MicroPython-ADC\_Cal  
+<small><small>**information taken from** https://github.com/matthias-bs/MicroPython-ADC\_Cal  
 **this document** https://github.com/josmet52/esp32-adc-cal/cal\_principe.md  
 **author** jmb52.dev@gmail.com / june 2021</small></small>
-
-## Principe 
+    
+## Principes 
 <small>(a good glimpse is provided in [4]) </small>
  
 - 11 dB attenuation is not implemented
 - for voltages over 1750 mV use R1 - R2 divider  
 - Per design the ADC reference voltage is 1100 mV, however the true
   reference voltage can range from 1000 mV to 1200 mV amongst different
-  ESP32s. [1]
+  ESP32s. [1] 
   
 ### Attenuation and "suggested input ranges" [1]
 
