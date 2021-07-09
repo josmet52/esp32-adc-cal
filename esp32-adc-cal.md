@@ -80,7 +80,8 @@ vMes between 0 and 4095
 ---  
 ##### `voltage = {[(\_coeff\_a * raw\_val) + \_LIN\_COEFF\_A\_ROUND] / \_LIN\_COEFF\_A\_SCALE} + \_coeff\_b`
 ---
-
+## Examples
+See class file : esp32-adc-cal.py
 ## Sources
 The calibration algorithm and constants are based on [2].  
 [1] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html#adc-calibration  
