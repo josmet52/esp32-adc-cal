@@ -1,6 +1,6 @@
 # MicroPython ESP32 ADC1 calibration  
 <small><small>using V\_ref calibration value  
-**author** **_jom_** jmb52.dev@gmail.com / june 2021</small></small>
+**jom** -> jmb52.dev@gmail.com / june 2021</small></small>
     
 ## Principes 
 <small>(a good glimpse is provided in [4]) </small>
