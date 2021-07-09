@@ -1,7 +1,5 @@
 # MicroPython ESP32 ADC1 calibration  
 <small><small>using V\_ref calibration value  
-**information taken from** https://github.com/matthias-bs/MicroPython-ADC\_Cal  
-**this document** https://github.com/josmet52/esp32-adc-cal/cal\_principe.md  
 **author** jmb52.dev@gmail.com / june 2021</small></small>
     
 ## Principes 
@@ -84,6 +82,7 @@ vMes between 0 and 4095
 See class file : esp32-adc-cal.py
 ## Sources
 The calibration algorithm and constants are based on [2].  
+[0] https://github.com/matthias-bs/MicroPython-ADC\_Cal
 [1] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html#adc-calibration  
 [2] https://github.com/espressif/esp-idf/blob/master/components/esp\_adc\_cal/esp\_adc\_cal\_esp32.c  
 [3] https://docs.micropython.org/en/latest/esp32/quickref.html #adc-analog-to-digital-conversion  
