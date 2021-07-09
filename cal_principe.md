@@ -2,17 +2,18 @@
 using V\_ref calibration value  
 <small><samll>**information taken from** https://github.com/matthias-bs/MicroPython-ADC\_Cal  
 **this document** https://github.com/josmet52/esp32-adc-cal/cal\_principe.md  
-june 2021 / jmb52.dev@gmail.com</small></small>
+**author** jmb52.dev@gmail.com / june 2021</small></small>
 
 ## Principe 
 <small>(a good glimpse is provided in [4]) </small>
  
 - 11 dB attenuation is not implemented
 - for voltages over 1750 mV use R1 - R2 divider  
-- "Per design the ADC reference voltage is 1100 mV, however the true
+- Per design the ADC reference voltage is 1100 mV, however the true
   reference voltage can range from 1000 mV to 1200 mV amongst different
-  ESP32s." [1]
-- Attenuation and "suggested input ranges" [1]
+  ESP32s. [1]
+  
+### Attenuation and "suggested input ranges" [1]
 
  Attenuation (dB)|Suggested range (mV)
  :--:|:--:
@@ -21,7 +22,7 @@ june 2021 / jmb52.dev@gmail.com</small></small>
  6 | 150 ~ 1750  
  ~~11~~ | ~~150 ~ 2450~~   
       
-
+### Linearity
 ![](linearity.png)
 
 
@@ -31,14 +32,6 @@ The ESP32 ADC can be sensitive to noise leading to large discrepancies in ADC re
 ADC noise mitigation
 ![](minimize\_noise.png)
 <small>Graph illustrating noise mitigation using capacitor and multisampling of 64 samples.</small>
-
-## Sources
-The calibration algorithm and constants are based on [2].
-
-[1] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html#adc-calibration  
-[2] https://github.com/espressif/esp-idf/blob/master/components/esp\_adc\_cal/esp\_adc\_cal\_esp32.c  
-[3] https://docs.micropython.org/en/latest/esp32/quickref.html #adc-analog-to-digital-conversion  
-[4] https://esp32.com/viewtopic.php?t=1045 ([Answered] What are the ADC input ranges?)
 ## Constants 
 https://github.com/espressif/esp-idf/blob/master/components/soc/esp32/include/soc/soc.h  
 \_DR\_REG\_EFUSE\_BASE      = const(0x3ff5A000)
@@ -78,7 +71,7 @@ vMes between 0 and 4095
 **\_LIN\_COEFF\_A\_SCALE**      = const(65536)  
 **\_LIN\_COEFF\_A\_ROUND**      = const(32768) # LIN\_COEFF\_A\_SCALE/2  
 ### coeff
-**\_coeff\_a** = vref * \_ADC1\_VREF\_ATTEN\_SCALE[attenuation] / \_ADC\_12\_BIT\_RES  
+**\_coeff\_a** = vref \* \_ADC1\_VREF\_ATTEN\_SCALE[attenuation] / \_ADC\_12\_BIT\_RES  
 **\_coeff\_b** = \_ADC1\_VREF\_ATTEN\_OFFSET[attenuation]
 ### inputs
 **raw_val** : between 0 and 4095  
@@ -87,6 +80,13 @@ vMes between 0 and 4095
 ---  
 ##### `voltage = {[(\_coeff\_a * raw\_val) + \_LIN\_COEFF\_A\_ROUND] / \_LIN\_COEFF\_A\_SCALE} + \_coeff\_b`
 ---
+
+## Sources
+The calibration algorithm and constants are based on [2].  
+[1] https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/adc.html#adc-calibration  
+[2] https://github.com/espressif/esp-idf/blob/master/components/esp\_adc\_cal/esp\_adc\_cal\_esp32.c  
+[3] https://docs.micropython.org/en/latest/esp32/quickref.html #adc-analog-to-digital-conversion  
+[4] https://esp32.com/viewtopic.php?t=1045 ([Answered] What are the ADC input ranges?)
 
 
 
